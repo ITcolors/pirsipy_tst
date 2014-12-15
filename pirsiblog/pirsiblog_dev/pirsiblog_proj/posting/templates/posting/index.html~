@@ -1,0 +1,9 @@
+{% if posts_out %}
+    <ul>
+    {% for post in posts_out %}
+        <li><a href="/posting/{{ post.id }}/">{{ post.id }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Пока нет ни одного поста.</p>
+{% endif %}

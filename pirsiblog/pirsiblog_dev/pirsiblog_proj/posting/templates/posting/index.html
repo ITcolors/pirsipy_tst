@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+{% if latest_posts %}
+<ul>
+  {% for post in latest_posts %}
+  <li><a href="/posting/{{ post.id }}/">{{ post.title }}</a></li>
+  {% endfor %}
+</ul>
+<div class="pagination">
+  <ul>
+    {% if paginator.has_previous %}
+    <li><a href="?page={{ paginator.previous_page_number }}">Previous</a></li>
+    {% else %}
+    <p>1 page</p>
+    {% endif %}
+    {% for pg in paginator.page_range %}
+    {% if paginator.number == pg %}
+    <li class="active"><a href="?page={{ pg }}">{{ pg }}</a></li>
+    {% else %}
+    <li><a href="?page={{ pg }}">{{ pg }}</a></li>
+    {% endif %}
+    {% endfor %}
+    {% if paginator.has_next %}
+    <li><a href="?page={{ paginator.next_page_number }}">Next</a></li>
+    {% endif %}
+  </ul>
+</div>
+{% else %}
+<p>Пока нет ни одного поста.</p>
+{% endif %}
+{% endblock %}
