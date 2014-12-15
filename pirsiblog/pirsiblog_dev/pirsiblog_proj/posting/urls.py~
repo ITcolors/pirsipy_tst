@@ -1,6 +1,0 @@
-from django.conf.urls import patterns, include, url
-from posting.views import Index
-
-urlpatterns = patterns('',
-    url(r'^$', Index.as_view()),
-)
